@@ -1,0 +1,1 @@
+ALTER table users ADD password varchar(255) default '123';

@@ -8,5 +8,5 @@ public interface CommentService {
 
     List<CommentViewDto> getList();
 
-    void save(String newComment);
+    void save(String newComment, String name);
 }

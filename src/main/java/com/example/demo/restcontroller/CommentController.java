@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.restcontroller;
 
 import com.example.demo.dto.CommentViewDto;
 import com.example.demo.service.CommentService;

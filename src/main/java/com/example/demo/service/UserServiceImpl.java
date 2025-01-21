@@ -40,6 +40,19 @@ public class UserServiceImpl implements UserService {
         return mapper.mapToUserDto(entity);
     }
 
+    @Override
+    public UserEntity getUserByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User with email = %s not found".formatted(email)));
+    }
+
+    @Override
+    public void createUserByEntity(UserEntity u) {
+        CityEntity city = cityRepository.findAll().get(0);
+        u.setCity(city);
+        userRepository.save(u);
+    }
+
     private void fillCity(UserCreateDto userCreateDto, UserEntity entity) {
         CityEntity city = cityRepository.findFirstByName(userCreateDto.getCityName())
                 .orElseThrow(

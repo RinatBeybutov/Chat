@@ -1,7 +1,7 @@
 
 package com.example.demo.unit;
 
-import com.example.demo.controller.CityController;
+import com.example.demo.restcontroller.CityController;
 import com.example.demo.dto.CityViewDto;
 import com.example.demo.service.CityService;
 import org.junit.jupiter.api.Assertions;

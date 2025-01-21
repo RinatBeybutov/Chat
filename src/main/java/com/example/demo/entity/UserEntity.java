@@ -36,6 +36,9 @@ public class UserEntity {
     @Column(name = "city_id", insertable=false, updatable=false)
     private Integer cityId;
 
+    @Column(name = "password")
+    private String password;
+
     //@OneToMany
     //private List<CommentEntity> comments;
 }

@@ -19,7 +19,7 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentMapper mapper;
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Override
     public List<CommentViewDto> getList() {
@@ -30,11 +30,14 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void save(String newComment) {
-        CommentEntity entity = new CommentEntity();
-        entity.setText(newComment);
-        entity.setDateTime(LocalDateTime.now());
-        entity.setUser(userRepository.findById(3).get());
-        CommentEntity saved = repository.save(entity);
+    public void save(String newComment, String email) {
+        CommentEntity comment = new CommentEntity();
+        comment.setText(newComment);
+        comment.setDateTime(LocalDateTime.now());
+
+        var user = userService.getUserByEmail(email);
+        comment.setUser(user);
+
+        repository.save(comment);
     }
 }

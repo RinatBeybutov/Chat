@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.restcontroller;
 
 import com.example.demo.dto.UserCreateDto;
 import com.example.demo.dto.UserViewDto;

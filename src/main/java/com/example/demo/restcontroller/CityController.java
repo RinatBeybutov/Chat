@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.restcontroller;
 
 import com.example.demo.dto.CityViewDto;
 import com.example.demo.service.CityService;
