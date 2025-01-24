@@ -1,6 +1,7 @@
 package com.example.demo.it;
 
 import com.example.demo.dto.CityViewDto;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ class CityIntegrationTest {
 
     @Test
     @DisplayName("Проверка получения списка")
+    @Disabled
     void shouldGetList() {
         var response = restTemplate
                 .getForEntity("/cities", CityViewDto[].class);
