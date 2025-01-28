@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.security.Principal;
 
 @Controller
-@RequestMapping("/main")
+//@RequestMapping("/")
 @RequiredArgsConstructor
 public class MainController {
 
@@ -29,6 +29,6 @@ public class MainController {
     public String addComment(@RequestParam("newComment") String newComment,
                              Principal user) {
         commentService.save(newComment, user.getName());
-        return "redirect:/main";
+        return "redirect:/";
     }
 }

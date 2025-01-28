@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -47,7 +48,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUserByEntity(UserEntity u) {
+    public void createUserByEntity(UserEntity u) throws Exception {
+        var optionalUser = userRepository.findByEmail(u.getEmail());
+
+        if(optionalUser.isPresent()) {
+            throw new Exception("User with email = %s already exists".formatted(u.getEmail()));
+        }
+
         CityEntity city = cityRepository.findAll().get(0);
         u.setCity(city);
         userRepository.save(u);

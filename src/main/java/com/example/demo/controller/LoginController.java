@@ -5,6 +5,8 @@ import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -27,11 +29,15 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public String register(UserEntity u) {
-        //Object user = model.getAttribute("user");
-        //if (user instanceof UserEntity u) {
+    public String register(UserEntity u, Model model, BindingResult result) {
+        try {
             userService.createUserByEntity(u);
-        //}
+        } catch (Exception e) {
+            // Не работает!
+            model.addAttribute("user", u);
+            result.rejectValue("email", "error.email.invalid", e.getMessage());
+            return "register";
+        }
         return "redirect:/login";
     }
 }

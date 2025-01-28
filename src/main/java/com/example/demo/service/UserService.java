@@ -13,5 +13,5 @@ public interface UserService {
 
     UserEntity getUserByEmail(String email);
 
-    void createUserByEntity(UserEntity u);
+    void createUserByEntity(UserEntity u) throws Exception;
 }
