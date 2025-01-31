@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DisplayName("Интеграционные тесты для CityController")
 @ActiveProfiles("test")
-class CityIntegrationTest {
+class CityIntegrationTest extends DBConfiguration {
 
     @Autowired
     private TestRestTemplate restTemplate;
