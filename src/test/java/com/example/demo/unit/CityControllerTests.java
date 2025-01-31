@@ -1,6 +1,7 @@
 
 package com.example.demo.unit;
 
+import com.example.demo.repository.CityRepository;
 import com.example.demo.restcontroller.CityController;
 import com.example.demo.dto.CityViewDto;
 import com.example.demo.service.CityService;
@@ -24,6 +25,9 @@ class CityControllerTests {
 
     @MockitoBean
     private CityService cityService;
+
+	@MockitoBean
+	private CityRepository cityRepository;
 
 	@Autowired
 	private CityController controller;
