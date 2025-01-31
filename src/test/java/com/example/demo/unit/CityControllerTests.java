@@ -12,12 +12,14 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.List;
 
 @SpringBootTest
 @DisplayName("Тестирование CityController")
+@ActiveProfiles("test")
 class CityControllerTests {
 
     @MockitoBean
