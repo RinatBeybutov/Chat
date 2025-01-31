@@ -1,6 +1,7 @@
 
 package com.example.demo.unit;
 
+import com.example.demo.it.DBConfiguration;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.restcontroller.CityController;
 import com.example.demo.dto.CityViewDto;
@@ -21,7 +22,7 @@ import java.util.List;
 @SpringBootTest
 @DisplayName("Тестирование CityController")
 @ActiveProfiles("test")
-class CityControllerTests {
+class CityControllerTests extends DBConfiguration {
 
     @MockitoBean
     private CityService cityService;
