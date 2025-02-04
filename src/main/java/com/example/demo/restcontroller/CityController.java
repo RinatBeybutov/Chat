@@ -1,5 +1,6 @@
 package com.example.demo.restcontroller;
 
+import com.example.demo.config.API;
 import com.example.demo.dto.CityViewDto;
 import com.example.demo.service.CityService;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.example.demo.config.API.CITIES;
+
 @RestController
-@RequestMapping("/cities")
+@RequestMapping(CITIES)
 @RequiredArgsConstructor
 public class CityController {
 

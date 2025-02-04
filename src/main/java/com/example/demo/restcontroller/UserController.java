@@ -1,5 +1,6 @@
 package com.example.demo.restcontroller;
 
+import com.example.demo.config.API;
 import com.example.demo.dto.UserCreateDto;
 import com.example.demo.dto.UserViewDto;
 import com.example.demo.service.UserService;
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.example.demo.config.API.USERS;
+
 @RestController
-@RequestMapping("/users")
+@RequestMapping(USERS)
 @RequiredArgsConstructor
 public class UserController {
 

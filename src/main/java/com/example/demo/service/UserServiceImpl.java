@@ -9,6 +9,7 @@ import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,7 @@ public class UserServiceImpl implements UserService {
     private final UserMapper mapper;
 
     @Override
+    @Transactional
     public List<UserViewDto> getUsers() {
         return userRepository.findAllWithJoin()
                 .stream()
@@ -32,7 +34,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserViewDto createUser(UserCreateDto userCreateDto) {
+        var optionalUser = userRepository.findByEmail(userCreateDto.getEmail());
+
+        if(optionalUser.isPresent()) {
+            throw new RuntimeException("User with email = %s already exists".formatted(userCreateDto.getEmail()));
+        }
+
         UserEntity entity = mapper.mapToUserEntity(userCreateDto);
 
         fillCity(userCreateDto, entity);
@@ -42,12 +51,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserEntity getUserByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User with email = %s not found".formatted(email)));
     }
 
     @Override
+    @Transactional
     public void createUserByEntity(UserEntity u) throws Exception {
         var optionalUser = userRepository.findByEmail(u.getEmail());
 
