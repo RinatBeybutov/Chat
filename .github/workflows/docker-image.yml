@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          tags: v.${{ env.GITHUB_RUN_NUMBER }}.0
+          tags: v.${{ vars.VERSION }}.${{ github.run_number }}
           annotations: ${{ steps.meta.outputs.annotations }}
           provenance: true
           sbom: true
