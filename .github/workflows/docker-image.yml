@@ -16,6 +16,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/chat
+          tags: |
+            type=semver, pattern=v${{ vars.VERSION }}.${{ github.run_number }}
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -30,7 +32,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          tags: v${{ vars.VERSION }}.${{ github.run_number }}
+          tags: ${{ steps.meta.outputs.tags }}
           annotations: ${{ steps.meta.outputs.annotations }}
           provenance: true
           sbom: true
