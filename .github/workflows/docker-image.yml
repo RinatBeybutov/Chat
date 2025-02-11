@@ -17,6 +17,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWOD }}
     - name: Build the Docker image
-      run: docker build -t ignat934/chat:${{github.ref_name}}
+      run: docker build ignat934/chat:${{github.ref_name}}
     - name: Push the Docker image
       run: docker push ignat934/chat:${{github.ref_name}}
