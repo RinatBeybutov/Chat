@@ -1,6 +1,5 @@
 package com.example.demo.restcontroller;
 
-import com.example.demo.config.API;
 import com.example.demo.dto.CityViewDto;
 import com.example.demo.service.CityService;
 import lombok.RequiredArgsConstructor;
